@@ -1,0 +1,22 @@
+{
+  "name": "free-at-home-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p .",
+    "pack": "./node_modules/.bin/free-at-home-cli buildscriptarchive build"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "free-at-home": "^0.9.3",
+    "ts-mixer": "5.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^14.10.0",
+    "free-at-home-cli": "^0.3.2",
+    "typescript": "^4.0.2"
+  }
+}

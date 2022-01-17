@@ -1,0 +1,37 @@
+{
+    "name": "Example for free@home addons",
+    "version": "1.0.0",
+    "id": "de.busch-jaeger.freeathome.example",
+    "license": "MIT",
+    "description": "Example for free@home addons",
+    "url": "http://busch-jaeger.de",
+    "author": "Busch Jaeger",
+    "type": "app",
+    "entryPoint": "build/main.js",
+    "parameters": {
+        "default": {
+            "name": "Settings",
+            "items": {
+                "username": {
+                    "name": "Username",
+                    "type": "string"
+                },
+                "apiKey": {
+                    "name": "API Key",
+                    "type": "string"
+                },
+                "ignoreReachability": {
+                    "name": "Ignore reachability",
+                    "type": "boolean"
+                },
+                "port": {
+                    "name": "Port",
+                    "type": "number",
+                    "min": 1024,
+                    "max": 65536
+                }
+            }
+        }
+    }
+  }
+  

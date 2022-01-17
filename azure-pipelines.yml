@@ -1,0 +1,50 @@
+trigger:
+  tags:
+    include:
+    - v*
+  branches:
+    include:
+    - '*'
+
+pool: 
+  vmImage: 'ubuntu-20.04'
+
+container: node:lts
+
+steps:
+- task: Npm@1
+  inputs:
+    command: 'install'
+    workingDir: '$(Build.SourcesDirectory)'
+    customRegistry: 'useFeed'
+    customFeed: 'cdc66582-4317-419c-9804-b5c9a44d0fdd/49a182ba-d355-4d1a-9882-fa25de6123e0'
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: '$(Build.SourcesDirectory)'
+    customCommand: 'run build'
+- task: Npm@1
+  inputs:
+    command: 'publish'
+    workingDir: '$(Build.SourcesDirectory)'
+    verbose: true
+    publishRegistry: 'useFeed'
+    publishFeed: 'cdc66582-4317-419c-9804-b5c9a44d0fdd/49a182ba-d355-4d1a-9882-fa25de6123e0'
+  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'))
+- task: Npm@1
+  displayName: 'npm run pack'
+  inputs:
+    command: 'custom'
+    workingDir: '$(Build.SourcesDirectory)'
+    customCommand: 'run pack'
+- task: CopyFiles@2
+  displayName: 'copy archive to artifact dir'
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)'
+    Contents: '*.tar'
+    TargetFolder: '$(Build.StagingDirectory)'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.StagingDirectory)'
+    ArtifactName: 'free at home archive'
+    publishLocation: 'Container'

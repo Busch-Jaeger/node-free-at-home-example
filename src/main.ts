@@ -64,6 +64,30 @@ scriptingHost.on("configurationChanged", (configuration: API.Configuration) => {
 
 scriptingHost.connectToConfiguration();
 
+//provide a RPC interface
+//#################################################################################
+
+import {RPC} from 'free-at-home';
+
+const rpc = new RPC.RpcWebsocket(metaData.id);
+
+function sleep(ms: number) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+rpc.addMethod("testCall", async (params: Partial<RPC.JSONRPCParams> | undefined) => {
+  params?.toString();
+  await sleep(100);
+  return { data: "test" };
+});
+
+rpc.addMethod("upload", async (params: Partial<RPC.JSONRPCParams> | undefined) => {
+  params?.toString();
+  await sleep(100);
+  RPC.UploadAuxiliaryDeviceData(metaData.id, "data blob");
+  // return { data: "test" };
+});
+
 // Signal handling for a smooth shutdown of an add on
 //#################################################################################
 

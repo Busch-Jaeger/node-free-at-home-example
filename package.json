@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "free-at-home": "^0.9.3",
+    "free-at-home": "^0.11.0",
     "ts-mixer": "5.4.0"
   },
   "devDependencies": {

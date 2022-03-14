@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/tsc -p .",
+    "buildProd": "node_modules/.bin/tsc  -p . --sourceMap false",
     "pack": "./node_modules/.bin/free-at-home-cli buildscriptarchive build"
   },
   "author": "",

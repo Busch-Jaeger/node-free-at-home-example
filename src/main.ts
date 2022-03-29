@@ -1,7 +1,5 @@
 import { FreeAtHome } from 'free-at-home';
 
-import { MediaPlayerChannel } from 'free-at-home';
-
 const freeAtHome = new FreeAtHome();
 
 async function main() {
@@ -20,29 +18,6 @@ async function main() {
   });
   virtualDimming.on("absoluteValueChanged", (value: number) => {
     console.log("dimming value is:", value );
-  });
-
-  const virtualMediaPlayer = await freeAtHome.createMediaPlayerDevice("123Media", "Virtual Media Player");
-  virtualMediaPlayer.setAutoKeepAlive(true);
-  // virtualMediaPlayer.isAutoConfirm = true;
-
-  let volume = 0;
-
-  virtualMediaPlayer.on("playModeChanged", (value: MediaPlayerChannel.PlayMode.playing | MediaPlayerChannel.PlayMode.paused) => {
-    virtualMediaPlayer.setPlayMode(value);
-    switch (value) {
-      case MediaPlayerChannel.PlayMode.playing:
-        virtualMediaPlayer.setTitle("Playing ...");
-        break;
-      case MediaPlayerChannel.PlayMode.paused:
-        virtualMediaPlayer.setTitle("Paused ...");
-        break;
-    }
-  });
-
-  virtualMediaPlayer.on("playVolumeChanged", (value: number) => {
-    volume = value;
-    virtualMediaPlayer.setVolume(value);
   });
 }
 
@@ -64,29 +39,6 @@ scriptingHost.on("configurationChanged", (configuration: API.Configuration) => {
 
 scriptingHost.connectToConfiguration();
 
-//provide a RPC interface
-//#################################################################################
-
-import {RPC} from 'free-at-home';
-
-const rpc = new RPC.RpcWebsocket(metaData.id);
-
-function sleep(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-rpc.addMethod("testCall", async (params: Partial<RPC.JSONRPCParams> | undefined) => {
-  params?.toString();
-  await sleep(100);
-  return { data: "test" };
-});
-
-rpc.addMethod("upload", async (params: Partial<RPC.JSONRPCParams> | undefined) => {
-  params?.toString();
-  await sleep(100);
-  RPC.UploadAuxiliaryDeviceData(metaData.id, "data blob");
-  // return { data: "test" };
-});
 
 // Signal handling for a smooth shutdown of an add on
 //#################################################################################

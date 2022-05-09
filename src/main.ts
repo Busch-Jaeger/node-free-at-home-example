@@ -26,18 +26,17 @@ main();
 // Get notified about changes in the configuration of the add on
 //#################################################################################
 
-import {ScriptingHost} from 'free-at-home';
-import {ScriptingAPI as API} from 'free-at-home'
+import {AddOn} from 'free-at-home';
 
-const metaData = ScriptingHost.readMetaData();
+const metaData = AddOn.readMetaData();
 
-const scriptingHost = new ScriptingHost.ScriptingHost(metaData.id);
+const addOn = new AddOn.AddOn(metaData.id);
 
-scriptingHost.on("configurationChanged", (configuration: API.Configuration) => {
+addOn.on("configurationChanged", (configuration: AddOn.Configuration) => {
   console.log(configuration);
 });
 
-scriptingHost.connectToConfiguration();
+addOn.connectToConfiguration();
 
 
 // Signal handling for a smooth shutdown of an add on

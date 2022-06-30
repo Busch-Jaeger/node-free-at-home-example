@@ -1,0 +1,20 @@
+{
+  "version": 1.0,
+  "shortDescription": {
+    "en": "Example for free@home addons"
+  },
+  "keywords": [
+    "example"
+  ],
+  "category": "device",
+  "licenseFile": {
+    "en": "gpl-3.0.txt"
+  },
+  "iconFile": "icon.svg",
+  "pictureFiles": {
+    "en": [
+      "pics/placeholder.webp"
+    ]
+  },
+  "videoFiles": {}
+}

@@ -1,10 +1,7 @@
 {
   "version": 1.0,
-  "shortDescription": {
-    "en": "Example for free@home addons"
-  },
   "keywords": [
-    "example"
+    "example", "bje"
   ],
   "category": "device",
   "licenseFile": {
@@ -12,6 +9,9 @@
   },
   "iconFile": "icon.svg",
   "pictureFiles": {
+    "de": [
+      "pics/placeholder.webp"
+    ],
     "en": [
       "pics/placeholder.webp"
     ]

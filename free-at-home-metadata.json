@@ -1,15 +1,9 @@
 {
   "id": "de.busch-jaeger.freeathome.example",
-  "name": {
-    "en": "Example for free@home addons"
-  },
   "author": "Busch Jaeger",
   "type": "app",
   "version": "1.0.0",
   "beta": true,
-  "description": {
-    "en": "Example for free@home addons"
-  },
   "url": {
     "en": "http://busch-jaeger.de"
   },

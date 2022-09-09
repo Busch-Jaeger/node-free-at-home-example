@@ -46,6 +46,15 @@ steps:
     SourceFolder: '$(Build.SourcesDirectory)'
     Contents: '*.tar'
     TargetFolder: '$(Build.StagingDirectory)'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)/fhstore'
+    includeRootFolder: true
+    archiveType: 'tar'
+    tarCompression: 'none'
+    archiveFile: '$(Build.StagingDirectory)/$(Build.Repository.Name)-fhstore.tar'
+    replaceExistingArchive: true
+    verbose: true
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.StagingDirectory)'

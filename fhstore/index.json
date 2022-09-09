@@ -5,7 +5,7 @@
   ],
   "category": "device",
   "licenseFile": {
-    "en": "gpl-3.0.txt"
+    "en": "mit-en.txt"
   },
   "iconFile": "icon.svg",
   "pictureFiles": {

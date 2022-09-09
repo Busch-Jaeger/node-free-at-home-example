@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "beta": true,
   "url": {
-    "en": "http://busch-jaeger.de"
+    "en": "https://busch-jaeger.de"
   },
   "entryPoint": "build/main.js",
   "license": "MIT",

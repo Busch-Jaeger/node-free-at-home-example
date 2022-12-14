@@ -1,4 +1,4 @@
-import { FreeAtHome } from 'free-at-home';
+import { FreeAtHome } from '@busch-jaeger/free-at-home';
 
 const freeAtHome = new FreeAtHome();
 freeAtHome.activateSignalHandling();
@@ -27,7 +27,7 @@ main();
 // Get notified about changes in the configuration of the add on
 //#################################################################################
 
-import {AddOn} from 'free-at-home';
+import {AddOn} from '@busch-jaeger/free-at-home';
 
 const metaData = AddOn.readMetaData();
 

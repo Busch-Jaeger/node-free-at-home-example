@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@busch-jaeger/free-at-home": "0.26.6-0",
+    "@busch-jaeger/free-at-home": "0.26.6-4",
     "ts-mixer": "5.4.0"
   },
   "devDependencies": {

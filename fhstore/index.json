@@ -7,7 +7,7 @@
   "licenseFile": {
     "en": "mit-en.txt"
   },
-  "iconFile": "icon.svg",
+  "iconUrl": "icon.svg",
   "pictureFiles": {
     "de": [
       "pics/placeholder.webp"

@@ -1,36 +1,23 @@
 {
-  "name": "Example for free@home addons",
-  "version": "1.0.0",
-  "id": "de.busch-jaeger.freeathome.example",
-  "license": "MIT",
-  "description": "Example for free@home addons",
-  "url": "https://www.busch-jaeger.de",
-  "author": "Busch Jaeger",
-  "type": "app",
-  "entryPoint": "build/main.js",
-  "parameters": {
-      "default": {
-          "name": "Settings",
-          "items": {
-              "username": {
-                  "name": "Username",
-                  "type": "string"
-              },
-              "apiKey": {
-                  "name": "API Key",
-                  "type": "string"
-              },
-              "ignoreReachability": {
-                  "name": "Ignore reachability",
-                  "type": "boolean"
-              },
-              "port": {
-                  "name": "Port",
-                  "type": "number",
-                  "min": 1024,
-                  "max": 65535
-              }
-          }
-      }
-  }
+    "name": "Daikin Air Conditioner Wifi",
+    "version": "1.0.0",
+    "id": "de.busch-jaeger.freeathome.daikin-wifi",
+    "license": "MIT",
+    "description": "This addon can be used to control all Daikin air conditioners that are can be controlled by the Daikin app. It uses the API of the selected devices in the wireless network.",
+    "url": "https://www.busch-jaeger.de",
+    "author": "Busch Jaeger",
+    "type": "app",
+    "entryPoint": "build/main.js",
+    "parameters": {
+        "default": {
+            "name": "Settings",
+            "items": {
+                "units": {
+                    "name": "Additional IP addresses (separated by comma)",
+                    "type": "string",
+                    "regex": "(([0-9]{1-3}\\.[0-9]{1-3}\\.[0-9]{1-3}\\.[0-9]{1-3})|(,))*"
+                }
+            }
+        }
+    }
 }

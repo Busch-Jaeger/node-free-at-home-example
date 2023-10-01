@@ -4,22 +4,24 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "./node_modules/.bin/tsc -p .",
-    "buildProd": "node_modules/.bin/tsc  -p . --sourceMap false",
+    "start": "node build/main.js",
+    "build": "node_modules/.bin/tsc -p .",
+    "buildProd": "node_modules/.bin/tsc  -p . --sourceMap false --declarationMap false",
+    "pack": "./node_modules/.bin/free-at-home-cli buildscriptarchive build",
     "journal": "./node_modules/.bin/free-at-home-cli journal --filterAddon",
-    "pack": "./node_modules/.bin/free-at-home-cli buildscriptarchive build"
+    "monitorstate": "./node_modules/.bin/free-at-home-cli addonapplicationstate --clear",
+    "monitorconfig": "./node_modules/.bin/free-at-home-cli addonconfiguration --clear"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@busch-jaeger/free-at-home": "0.26.6-4",
+    "@busch-jaeger/free-at-home": "0.30.2",
     "ts-mixer": "5.4.0"
   },
   "devDependencies": {
-    "@tsconfig/node12": "^1.0.9",
-    "@types/node": "^14.10.0",
-    "@busch-jaeger/free-at-home-cli": "^0.5.0",
-    "typescript": "^4.5.5"
+    "@busch-jaeger/free-at-home-cli": "^0.6.1",
+    "@tsconfig/node18": "^18.2.2",
+    "@types/node": "^18.15.3",
+    "typescript": "^5.2.2"
   }
 }

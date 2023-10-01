@@ -7,7 +7,7 @@ trigger:
     - '*'
 
 pool: 
-  vmImage: 'ubuntu-20.04'
+  vmImage: ubuntu-22.04
 
 container: node:lts
 
@@ -17,8 +17,6 @@ steps:
   inputs:
     command: 'install'
     workingDir: '$(Build.SourcesDirectory)'
-    customRegistry: 'useFeed'
-    customFeed: 'cdc66582-4317-419c-9804-b5c9a44d0fdd/49a182ba-d355-4d1a-9882-fa25de6123e0'
 - task: Npm@1
   displayName: 'npm run buildProd'
   inputs:
@@ -26,25 +24,20 @@ steps:
     workingDir: '$(Build.SourcesDirectory)'
     customCommand: 'run buildProd'
 - task: Npm@1
-  displayName: 'npm publish'
-  inputs:
-    command: 'publish'
-    workingDir: '$(Build.SourcesDirectory)'
-    verbose: true
-    publishRegistry: 'useFeed'
-    publishFeed: 'cdc66582-4317-419c-9804-b5c9a44d0fdd/49a182ba-d355-4d1a-9882-fa25de6123e0'
-  condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'))
-- task: Npm@1
   displayName: 'npm run pack'
   inputs:
     command: 'custom'
     workingDir: '$(Build.SourcesDirectory)'
     customCommand: 'run pack'
+- task: CmdLine@2
+  displayName: 'compress addon archive'
+  inputs:
+    script: 'bzip2 -z *.tar'
 - task: CopyFiles@2
   displayName: 'copy archive to artifact dir'
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: '*.tar'
+    Contents: '*.tar.bz2'
     TargetFolder: '$(Build.StagingDirectory)'
 - task: ArchiveFiles@2
   inputs:

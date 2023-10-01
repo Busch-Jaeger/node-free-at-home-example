@@ -27,9 +27,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run build --if-present
+    - run: npm run buildProd --if-present
     - run: npm run pack --if-present
+    - run: bzip2 -z *.tar
     - uses: actions/upload-artifact@v3
       with:
         name: addon
-        path: "*.tar"
+        path: "*.tar.bz2"

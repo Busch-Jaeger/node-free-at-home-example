@@ -9,9 +9,10 @@ trigger:
 pool: 
   vmImage: ubuntu-22.04
 
-container: node:lts
-
 steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
 - task: Npm@1
   displayName: 'npm install'
   inputs:
@@ -53,3 +54,18 @@ steps:
     PathtoPublish: '$(Build.StagingDirectory)'
     ArtifactName: 'free at home archive'
     publishLocation: 'Container'
+- task: DownloadBuildArtifacts@1
+  displayName: 'download warden cli'
+  inputs:
+    buildType: 'specific'
+    project: 'cdc66582-4317-419c-9804-b5c9a44d0fdd'
+    pipeline: '473'
+    buildVersionToDownload: 'latestFromBranch'
+    branchName: 'refs/heads/main'
+    downloadType: 'single'
+    artifactName: 'scriptstore-warden'
+    downloadPath: '$(System.ArtifactsDirectory)'
+- script: |
+    chmod +x $(System.ArtifactsDirectory)/scriptstore-warden
+    $(System.ArtifactsDirectory)/scriptstore-warden  --quickcheck .
+  displayName: 'validate store index files'
